@@ -37,8 +37,6 @@ def update_spreadsheet():
 
     df_modified = df_updated[df_updated["url"].isin(modified_urls)]
 
-    #First check if there were any changes/new articles, then we only keep the not modified articles in the df_old.
-    #After, we concatenate the old df (free of the modified rows) with the df_added (new articles) and df_modified for the modified articles.
     if not df_added.empty or not df_modified.empty:
         print(f"{len(df_added)} new articles were found and {len(df_modified)} modified")
         print("Enriching the information of the new articles...")

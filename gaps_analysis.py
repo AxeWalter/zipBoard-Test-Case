@@ -22,8 +22,8 @@ def generate_global_gaps(client, data_path, gaps_path):
     catalog_summary = df_catalog[["article id", "category", "article name", "gaps identified"]].to_string()
 
     prompt = f"""
-                Act as Senior Technical Writer and QA Auditor. Your task is to analyse the provided data, access the
-                provided competitor websites, analyse the competitor data and compare with the provided one to, in the end,
+                Act as Senior Technical Writer and QA Auditor. Your task is to analyze the provided data, access the
+                provided competitor websites, analyze the competitor data and compare with the provided one to, in the end,
                 return 10 Global Documentation Gaps in the zipBoard documentation. I'll be more specific by parts:
                 
                 1. Context of what is zipBoard
@@ -44,7 +44,7 @@ def generate_global_gaps(client, data_path, gaps_path):
                 3.Competitor Websites
                 Compare the information found in this catalog with the information found in some competitors websites that
                 provide a similar service. Think this as comparing to a possible golden standard. What documentation the
-                competitor have tha zipBoard does not? What services both provide but the competitor has a more in depth
+                competitor has that zipBoard does not? What services both provide but the competitor has a more in depth
                 guide on how to use? The competitors are:
                 a. BugHerd (https://support.bugherd.com/en/);
                 b. MarkUp.io (https://educate.ceros.com/en/collections/15677333-faq);
@@ -58,16 +58,16 @@ def generate_global_gaps(client, data_path, gaps_path):
                 do this consider all the data provided (the context, catalog and competitor), and ponder about:
                 - Are there major features undocumented? (e.g. API, Security, specific integrations);
                 - Are there any major user questions that are not covered in the documentation?
-                - What documentation are present in the competitors website that is not available in the zipBoard?
+                - What documentation are present in the competitor’s website that is not available in the zipBoard?
                 
                 5. Output format
                 Return a JSON object with a list called 'global_gaps'. Each gap must follow this EXACT table structure:
                 - Gap ID: (G-001 format);
-                - Category: (things like Integrations, Security, Onboarding, Developer, User, API, etc);
+                - Category: (things like Integrations, Security, Onboarding, Developer, User, API, etc.);
                 - Gap Description: (1-2 sentences describing the gap);
                 - Priority: (High/Medium/Low);
                 - Suggested Article Title: (Catchy, helpful title);
-                - Rationale: (Why this gap matters for the user, why do we need to write and article about it)
+                - Rationale: (Why this gap matters for the user, why do we need to write an article about it)
                 
                 Return ONLY the JSON object.
                 
@@ -103,9 +103,9 @@ def generate_top2(client, df_gaps, gaps_path):
     gaps_summary = df_gaps.to_string() #This time we will use the whole df
 
     prompt = f"""
-                Act as Senior Technical Writer and QA Auditor. Your task is to analyse the provided data and consider the
-                context of zipBoard to select the top 2 gaps present in the data, provide and explanation on why they
-                are the most important gaps and write and article outline for those two gaps. I'll be more specific 
+                Act as Senior Technical Writer and QA Auditor. Your task is to analyze the provided data and consider the
+                context of zipBoard to select the top 2 gaps present in the data, provide an explanation on why they
+                are the most important gaps and write an article outline for those two gaps. I'll be more specific 
                 by parts:
                 
                 1. Context of what is zipBoard
@@ -122,12 +122,12 @@ def generate_top2(client, df_gaps, gaps_path):
                 {gaps_summary}
                 
                 3. Proper Description of task 
-                1. Select, from the provided data, the TOP 2 gaps that have the highest priority and business impact (
+                a. Select, from the provided data, the TOP 2 gaps that have the highest priority and business impact (
                 e.g. blocking sales, causing high churn, causing confusion to customers). It's IMPORTANT to note: select
                 the two most important gaps, not simply the first two!
-                2. Provide a detailed explanation of why these two were chosen over the others and, most importantly,
+                b. Provide a detailed explanation of why these two were chosen over the others and, most importantly,
                 whey these are important to the customer;
-                3. Write a comprehensive article outline for each gap. The outline should include:
+                c. Write a comprehensive article outline for each gap. The outline should include:
                 - Title of the article (use the one from the data provided);
                 - Goal of the article;
                 - Key sections (no need to write on them, just outline what should be disused);

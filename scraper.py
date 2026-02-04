@@ -108,8 +108,8 @@ def llm_topics_analysis(data):
             1. Extract 4 key technical topics (e.g. JIRA Cloud, JIRA Server, API, API Token, Webhooks, Mapping).
             
             2. Identify ONE specific 'Documentation Gap'. We will define 'Documentation Gap' as a missing piece of
-            critical information that a user would need based on the article's title (e.g. an article named "
-            'API errors' not containing API error codes would have a gap that we can title 'Missing API error codes'.
+            critical information that a user would need based on the article's title (e.g. an article named
+            'API errors' not containing API error codes would have a gap that we can title 'Missing API error codes').
             Base your analysis on good documentation practices for software and keep the 'Documentation Gap' brief,
             never exceeding 80 characters. If no gap is found, return 'None identified'."
             
